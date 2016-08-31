@@ -1,0 +1,5 @@
+c:\users\deathnell\documents\visual studio 2015\Projects\ConsoleApplication3\DD.Core\obj\Debug\DD.Core.csprojResolveAssemblyReference.cache
+C:\Users\deathnell\Documents\Visual Studio 2015\Projects\ConsoleApplication3\DD.Core\bin\Debug\DD.Core.dll
+C:\Users\deathnell\Documents\Visual Studio 2015\Projects\ConsoleApplication3\DD.Core\bin\Debug\DD.Core.pdb
+C:\Users\deathnell\Documents\Visual Studio 2015\Projects\ConsoleApplication3\DD.Core\obj\Debug\DD.Core.dll
+C:\Users\deathnell\Documents\Visual Studio 2015\Projects\ConsoleApplication3\DD.Core\obj\Debug\DD.Core.pdb

@@ -1,0 +1,4 @@
+﻿public class PlayableJob:IJob
+{
+   
+}
