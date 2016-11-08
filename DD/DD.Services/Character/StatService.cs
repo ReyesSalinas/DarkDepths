@@ -2,11 +2,11 @@ using System;
 using System.Linq;
 public static class StatService
 {
+    
     public static int GetAttack(ICharacter character)
     {
-        var weaponBonus = character.Bag.Single(
-        x => x is Weapon && x.IsEquiped == true).Bonus;
-
+        var weaponBonus = character.Bag.Single(x => x is Weapon && x.IsEquiped == true).Bonus;
+            
         return character.Stats.Attack + weaponBonus;
 
     }

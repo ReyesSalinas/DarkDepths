@@ -1,6 +1,6 @@
 using System;
 using System.Linq;
-public class Feet : IEquipment
+public class Feet : IEquipable
 {
     public int Bonus { get; set; }
     public int Id { get; set; }

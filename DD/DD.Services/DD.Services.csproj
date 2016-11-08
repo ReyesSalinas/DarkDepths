@@ -30,6 +30,8 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
+    <Reference Include="Microsoft.Xna.Framework, Version=4.0.0.0, Culture=neutral, PublicKeyToken=842cf8be1de50553, processorArchitecture=x86" />
+    <Reference Include="Microsoft.Xna.Framework.Graphics, Version=4.0.0.0, Culture=neutral, PublicKeyToken=842cf8be1de50553, processorArchitecture=x86" />
     <Reference Include="System" />
     <Reference Include="System.Core" />
     <Reference Include="System.Xml.Linq" />
@@ -41,9 +43,20 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Animation\ActionService.cs" />
+    <Compile Include="Animation\AnimationService.cs" />
+    <Compile Include="Character\Area.cs" />
+    <Compile Include="Character\EquipmentService.cs" />
+    <Compile Include="Character\ExceptionService.cs" />
     <Compile Include="Character\StatService.cs" />
+    <Compile Include="Character\World.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="World\MapServices.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\DD.Core\DD.Core.csproj">
+      <Project>{d8d5127e-c0ec-45e9-9fb3-17da6d7b1aa1}</Project>
+      <Name>DD.Core</Name>
+    </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 

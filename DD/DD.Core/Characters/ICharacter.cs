@@ -7,6 +7,7 @@ public interface ICharacter
     string Name { get; set; }
     PlayableJob Job { get; set; }
     BaseStats Stats { get; set; }
-    IEnumerable<IEquipment> Bag { get; set; }
+    IEnumerable<IEquipable> Bag { get; set; }
     IEnumerable<ICard> Cards { get; set; }
+    
 }

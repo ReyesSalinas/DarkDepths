@@ -1,6 +1,6 @@
 using System;
 using System.Linq;
-public class Armor : IEquipment
+public class Armor : IEquipable
 {
     public int Bonus { get; set; }
     public int Id { get; set; }

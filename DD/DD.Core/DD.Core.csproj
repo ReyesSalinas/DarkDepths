@@ -52,8 +52,9 @@
     <Compile Include="Items\Equipment\Feet.cs" />
     <Compile Include="Items\ICard.cs" />
     <Compile Include="Characters\ICharacter.cs" />
-    <Compile Include="Items\IEquipment.cs" />
+    <Compile Include="Items\IEquipable.cs" />
     <Compile Include="Items\IGameItem.cs" />
+    <Compile Include="Repository\ICardRepository.cs" />
     <Compile Include="Sprites\ISprite.cs" />
     <Compile Include="World\Map.cs" />
     <Compile Include="Items\Cards\Movement.cs" />

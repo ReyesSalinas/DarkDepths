@@ -1,6 +1,6 @@
 using System;
 using System.Linq;
-public class Ring : IEquipment
+public class Ring : IEquipable
 {
     public int Bonus { get; set; }
     public int Id { get; set; }

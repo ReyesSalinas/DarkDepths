@@ -1,3 +1,3 @@
-﻿internal class PlayerControled
+﻿public  class PlayerControled
 {
 }

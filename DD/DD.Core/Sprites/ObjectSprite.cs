@@ -1,3 +1,3 @@
-﻿internal class ObjectSprite
+﻿public class ObjectSprite
 {
 }
