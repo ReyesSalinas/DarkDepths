@@ -6,13 +6,13 @@ using System.Threading.Tasks;
 using UnityEngine;
 using UnityEngine.PlayerLoop;
 
-namespace Assets
+namespace Engine.Core
 {
     class FollowCamera : MonoBehaviour
     {
         [SerializeField] private Transform target;
         
-        void Update()
+        void LateUpdate()
         {
            transform.position = target.position;
         }
