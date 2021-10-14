@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using Assets.Scripts.Core;
 using Engine.Combat;
 using UnityEditor;
 using UnityEditor.PackageManager;
@@ -20,24 +21,28 @@ namespace Engine.Controller
             if (_isInCombat) return;
             HandleMovement();
             if (_canMoveToPoint) return;
-            print("Nothing to do here");
         }
 
         private void HandleCombat()
         {
-            ResetCombatState();
             var rayCastHits = Physics.RaycastAll(GetMouseRay());
             foreach (var hit in rayCastHits)
             {
                 var combatTarget = hit.transform?.GetComponent<CombatTarget>();
-                if (combatTarget == null) continue;
                 if (Input.GetMouseButtonDown(0))
                 {
-                    GetComponent<Fighter>().Attack(combatTarget);
+                    var fighter = GetComponent<Fighter>();
+                    if (combatTarget == null)
+                    {
+                        _isInCombat = false;
+                        return;
+                    }
+                    fighter.Attack(combatTarget);
+                    _isInCombat = true;
+                    return;
                 }
-
-                _isInCombat = true;
             }
+            
         }
 
         private void HandleMovement()
@@ -47,27 +52,24 @@ namespace Engine.Controller
             var hasHit = Physics.Raycast(ray, out hit);
             if (hasHit)
             {
+                var mover = GetComponent<Movement.Mover>();
                 if (Input.GetMouseButton(0))
                 {
-                    GetComponent<Movement.Mover>().MoveTo(hit.point);
+                    mover.StartMoveAction(hit.point);
+                    
                 }
-
                 _canMoveToPoint = true;
             }
             else
             {
                 _canMoveToPoint = false;
             }
+            
         }
 
         private Ray GetMouseRay()
         {
             return Camera.main.ScreenPointToRay(Input.mousePosition);
-        }
-
-        private void ResetCombatState()
-        {
-            _isInCombat = false;
         }
     }
 }
