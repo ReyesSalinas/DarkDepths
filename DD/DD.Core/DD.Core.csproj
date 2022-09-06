@@ -1,75 +1,84 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <Project ToolsVersion="14.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
-  <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
-  <PropertyGroup>
-    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
-    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
-    <ProjectGuid>{D8D5127E-C0EC-45E9-9FB3-17DA6D7B1AA1}</ProjectGuid>
-    <OutputType>Library</OutputType>
-    <AppDesignerFolder>Properties</AppDesignerFolder>
-    <RootNamespace>DD.Core</RootNamespace>
-    <AssemblyName>DD.Core</AssemblyName>
-    <TargetFrameworkVersion>v4.5.2</TargetFrameworkVersion>
-    <FileAlignment>512</FileAlignment>
-  </PropertyGroup>
-  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
-    <DebugSymbols>true</DebugSymbols>
-    <DebugType>full</DebugType>
-    <Optimize>false</Optimize>
-    <OutputPath>bin\Debug\</OutputPath>
-    <DefineConstants>DEBUG;TRACE</DefineConstants>
-    <ErrorReport>prompt</ErrorReport>
-    <WarningLevel>4</WarningLevel>
-  </PropertyGroup>
-  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
-    <DebugType>pdbonly</DebugType>
-    <Optimize>true</Optimize>
-    <OutputPath>bin\Release\</OutputPath>
-    <DefineConstants>TRACE</DefineConstants>
-    <ErrorReport>prompt</ErrorReport>
-    <WarningLevel>4</WarningLevel>
-  </PropertyGroup>
-  <ItemGroup>
-    <Reference Include="System" />
-    <Reference Include="System.Core" />
-    <Reference Include="System.Drawing" />
-    <Reference Include="System.Xml.Linq" />
-    <Reference Include="System.Data.DataSetExtensions" />
-    <Reference Include="Microsoft.CSharp" />
-    <Reference Include="System.Data" />
-    <Reference Include="System.Net.Http" />
-    <Reference Include="System.Xml" />
-  </ItemGroup>
-  <ItemGroup>
-    <Compile Include="Characters\IJob.cs" />
-    <Compile Include="Characters\Jobs\MonsterJob.cs" />
-    <Compile Include="Characters\Jobs\PlayableJob.cs" />
-    <Compile Include="Items\Equipment\Armor.cs" />
-    <Compile Include="Items\Cards\Attack.cs" />
-    <Compile Include="Characters\Stats\BaseStats.cs" />
-    <Compile Include="Items\Equipment\Weapon.cs" />
-    <Compile Include="Items\Cards\Defense.cs" />
-    <Compile Include="Items\Equipment\Feet.cs" />
-    <Compile Include="Items\ICard.cs" />
-    <Compile Include="Characters\ICharacter.cs" />
-    <Compile Include="Items\IEquipment.cs" />
-    <Compile Include="Items\IGameItem.cs" />
-    <Compile Include="Sprites\ISprite.cs" />
-    <Compile Include="World\Map.cs" />
-    <Compile Include="Items\Cards\Movement.cs" />
-    <Compile Include="Sprites\ObjectSprite.cs" />
-    <Compile Include="Sprites\PlayerControled.cs" />
-    <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="Items\Equipment\Ring.cs" />
-    <Compile Include="Items\Cards\Trap.cs" />
-  </ItemGroup>
-  <ItemGroup />
-  <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
-  <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
-       Other similar extension points exist, see Microsoft.Common.targets.
-  <Target Name="BeforeBuild">
-  </Target>
-  <Target Name="AfterBuild">
-  </Target>
-  -->
+    <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
+    <PropertyGroup>
+        <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+        <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+        <ProjectGuid>{D8D5127E-C0EC-45E9-9FB3-17DA6D7B1AA1}</ProjectGuid>
+        <OutputType>Library</OutputType>
+        <AppDesignerFolder>Properties</AppDesignerFolder>
+        <RootNamespace>DD.Core</RootNamespace>
+        <AssemblyName>DD.Core</AssemblyName>
+        <TargetFrameworkVersion>v4.5.2</TargetFrameworkVersion>
+        <FileAlignment>512</FileAlignment>
+    </PropertyGroup>
+    <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+        <DebugSymbols>true</DebugSymbols>
+        <DebugType>full</DebugType>
+        <Optimize>false</Optimize>
+        <OutputPath>bin\Debug\</OutputPath>
+        <DefineConstants>DEBUG;TRACE</DefineConstants>
+        <ErrorReport>prompt</ErrorReport>
+        <WarningLevel>4</WarningLevel>
+    </PropertyGroup>
+    <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+        <DebugType>pdbonly</DebugType>
+        <Optimize>true</Optimize>
+        <OutputPath>bin\Release\</OutputPath>
+        <DefineConstants>TRACE</DefineConstants>
+        <ErrorReport>prompt</ErrorReport>
+        <WarningLevel>4</WarningLevel>
+    </PropertyGroup>
+    <ItemGroup>
+        <Reference Include="System" />
+        <Reference Include="System.Core" />
+        <Reference Include="System.Drawing" />
+        <Reference Include="System.Xml.Linq" />
+        <Reference Include="System.Data.DataSetExtensions" />
+        <Reference Include="Microsoft.CSharp" />
+        <Reference Include="System.Data" />
+        <Reference Include="System.Net.Http" />
+        <Reference Include="System.Xml" />
+    </ItemGroup>
+    <ItemGroup>
+        <Compile Include="Components\Characters\Character.cs" />
+        <Compile Include="Components\Characters\ICharacter.cs" />
+        <Compile Include="Components\Characters\Jobs\IJob.cs" />
+        <Compile Include="Components\Characters\Jobs\MonsterJob.cs" />
+        <Compile Include="Components\Characters\Jobs\PlayableJob.cs" />
+        <Compile Include="Components\Characters\PlayerControlledCharacter.cs" />
+        <Compile Include="Components\Characters\Stats\BaseStats.cs" />
+        <Compile Include="Components\Characters\Stats\Stats.cs" />
+        <Compile Include="Components\ExperienceManager.cs" />
+        <Compile Include="Components\StatManager.cs" />
+        <Compile Include="Entities\IEntity.cs" />
+        <Compile Include="Entities\PlayerControlledEntity.cs" />
+        <Compile Include="Items\Equipment\Armor.cs" />
+        <Compile Include="Items\Cards\Attack.cs" />
+        <Compile Include="Items\Equipment\Weapon.cs" />
+        <Compile Include="Items\Cards\Defense.cs" />
+        <Compile Include="Items\Equipment\Feet.cs" />
+        <Compile Include="Items\ICard.cs" />
+        <Compile Include="Items\IEquipment.cs" />
+        <Compile Include="Items\IGameItem.cs" />
+        <Compile Include="Sprites\ISprite.cs" />
+        <Compile Include="World\Map.cs" />
+        <Compile Include="Items\Cards\Movement.cs" />
+        <Compile Include="Sprites\ObjectSprite.cs" />
+        <Compile Include="Sprites\PlayerControlledSprite.cs" />
+        <Compile Include="Properties\AssemblyInfo.cs" />
+        <Compile Include="Items\Equipment\Ring.cs" />
+        <Compile Include="Items\Cards\Trap.cs" />
+    </ItemGroup>
+    <ItemGroup>
+        <Folder Include="Test" />
+    </ItemGroup>
+    <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+    <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
+         Other similar extension points exist, see Microsoft.Common.targets.
+    <Target Name="BeforeBuild">
+    </Target>
+    <Target Name="AfterBuild">
+    </Target>
+    -->
 </Project>

@@ -1,5 +1,3 @@
-using System;
-using System.Linq;
 public class Defense : ICard
 {
     public int Id { get; set; }

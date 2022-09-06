@@ -1,5 +1,3 @@
-using System;
-using System.Linq;
 public class Ring : IEquipment
 {
     public int Bonus { get; set; }

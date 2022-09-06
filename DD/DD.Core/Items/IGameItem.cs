@@ -1,5 +1,3 @@
-using System;
-using System.Linq;
 public interface IGameItem
 {
     int Id { get; set; }
