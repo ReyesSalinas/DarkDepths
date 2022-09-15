@@ -1,4 +1,6 @@
-﻿using Assets.Scripts.Core;
+﻿using Assets.Scripts.Combat;
+using Assets.Scripts.Core;
+using Assets.Scripts.Core.Character;
 using UnityEngine;
 using UnityEngine.AI;
 
@@ -14,10 +16,12 @@ namespace Engine.Movement
         void Start()
         {
             _navMeshAgent = GetComponent<NavMeshAgent>();
+            _navMeshAgent.speed = GetComponent<Character>()?.Movement() ?? _navMeshAgent.speed;
         }
 
         void Update()
         {
+            _navMeshAgent.enabled = !GetComponent<Health>().isDead;
             UpdateAnimator();
         }
 
@@ -28,6 +32,7 @@ namespace Engine.Movement
         }
         public void MoveTo(Vector3 point)
         {
+            
             _navMeshAgent.destination = point;
             _navMeshAgent.isStopped = false;
         }
@@ -43,7 +48,7 @@ namespace Engine.Movement
 
         private void UpdateAnimator()
         {
-            Vector3 velocity = GetComponent<NavMeshAgent>().velocity;
+            Vector3 velocity = _navMeshAgent.velocity;
             Vector3 localVelocity = transform.InverseTransformDirection(velocity);
             float speed = localVelocity.z;
             GetComponent<Animator>().SetFloat("forwardSpeed", speed);

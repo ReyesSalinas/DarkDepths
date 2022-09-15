@@ -13,10 +13,14 @@ namespace Assets.Scripts.Core
         public void StartAction(IAction action)
         {
             if (action == _currentAction) return;
-
             _currentAction?.Cancel();
             _currentAction = action;
 
+        }
+
+        public void CancelCurrentAction()
+        {
+            StartAction(null);
         }
     }
 }

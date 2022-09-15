@@ -1,22 +1,28 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using Assets.Scripts.Combat;
+﻿using Assets.Scripts.Combat;
 using Assets.Scripts.Core;
+using Engine.Core;
 using Engine.Movement;
 using UnityEngine;
+using Assets.Scripts.Core.Character;
 
 namespace Engine.Combat
 {
     public class Fighter : MonoBehaviour, IAction
     {
-        [SerializeField] float weaponRange = 1f;
         [SerializeField] float timeBetweenAttacks = 1f;
-        [SerializeField] int weaponDamage = 5;
+        [SerializeField] Transform handTransform = null;
+        [SerializeField] Weapon defaultWeapon = null;
+
+
         private Transform target;
         private float _timeSinceLastAttack = 0;
+        private Weapon currentWeapon = null;
+        public void Start()
+        {
+            EquipWeapon(defaultWeapon);
+        }
+
+        
         public void Update()
         {
             if (target == null || target.GetComponent<Health>().isDead)
@@ -26,8 +32,8 @@ namespace Engine.Combat
             };
             _timeSinceLastAttack += Time.deltaTime;
             var mover = GetComponent<Mover>();
-            var isInRange = Vector3.Distance(transform.position, target.position) < weaponRange;
-            if (!isInRange)
+            var isInRange = Vector3.Distance(transform.position, target.position) < (currentWeapon?.WeaponRange ?? 1f);
+            if (!isInRange & !IsInAttackAnimation(GetComponent<Animator>()))
             {
                 mover.MoveTo(target.position);
 
@@ -38,7 +44,7 @@ namespace Engine.Combat
                 HandleAttackBehaviour();
             }
         }
-        public void Attack(CombatTarget combatTarget)
+        public void Attack(Target combatTarget)
         {
             GetComponent<ActionScheduler>().StartAction(this);
             target = combatTarget.transform;
@@ -52,8 +58,9 @@ namespace Engine.Combat
         // Animation Event
         void Hit()
         {
-            
-            target.GetComponent<Health>().TakeDamage(weaponDamage);
+            var bonusDamage = GetComponent<Character>()?.Attack() ?? 0f; 
+            var weaponDamage = currentWeapon?.WeaponDamage ?? 0f;           
+            target.GetComponent<Health>().TakeDamage(bonusDamage + weaponDamage);
         }
 
         void HandleAttackBehaviour()
@@ -65,6 +72,17 @@ namespace Engine.Combat
                 GetComponent<Animator>().SetTrigger("attack");
                 _timeSinceLastAttack = 0f;
             }
+        }
+
+        bool IsInAttackAnimation(Animator animator)
+        {
+            return animator.GetCurrentAnimatorStateInfo(0).IsName("Attack");
+        }
+        public void EquipWeapon(Weapon weapon)
+        {
+            currentWeapon = weapon;
+            Animator animator = GetComponent<Animator>();
+            currentWeapon.Spawn(handTransform,animator);
         }
     }
 }

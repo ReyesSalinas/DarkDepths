@@ -5,9 +5,10 @@ using System.Text;
 using System.Threading.Tasks;
 using UnityEngine;
 
-namespace Engine.Combat
+namespace Engine.Core
 {
-    public class CombatTarget : MonoBehaviour
+    public class EnemyTarget : AITarget
     {
+
     }
 }

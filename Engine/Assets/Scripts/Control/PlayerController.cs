@@ -1,12 +1,8 @@
-using System.Collections;
-using System.Collections.Generic;
-using Assets.Scripts.Core;
+using Assets.Scripts.Core.Character;
 using Engine.Combat;
-using UnityEditor;
-using UnityEditor.PackageManager;
+using Engine.Core;
+using System;
 using UnityEngine;
-using UnityEngine.AI;
-
 
 namespace Engine.Controller
 {
@@ -14,13 +10,16 @@ namespace Engine.Controller
     {
         private bool _isInCombat = false;
         private bool _canMoveToPoint = false;
+        private EnemyTarget currentTarget = null;
+        public delegate void HandleTarget(GameObject target);
+        public HandleTarget onTargetHover;
 
         void Update()
         {
+            if(GetComponent<Health>().isDead) return;
             HandleCombat();
             if (_isInCombat) return;
             HandleMovement();
-            if (_canMoveToPoint) return;
         }
 
         private void HandleCombat()
@@ -28,21 +27,22 @@ namespace Engine.Controller
             var rayCastHits = Physics.RaycastAll(GetMouseRay());
             foreach (var hit in rayCastHits)
             {
-                var combatTarget = hit.transform?.GetComponent<CombatTarget>();
+                var combatTarget = hit.transform.GetComponent<EnemyTarget>();
+               
                 if (Input.GetMouseButtonDown(0))
                 {
-                    var fighter = GetComponent<Fighter>();
                     if (combatTarget == null)
                     {
                         _isInCombat = false;
-                        return;
+                        continue;
                     }
-                    fighter.Attack(combatTarget);
+                    currentTarget = combatTarget;
+                    var fighter = GetComponent<Fighter>();
+                    fighter.Attack(currentTarget);                    
                     _isInCombat = true;
-                    return;
                 }
+                onTargetHover(combatTarget?.gameObject);
             }
-            
         }
 
         private void HandleMovement()
@@ -56,7 +56,7 @@ namespace Engine.Controller
                 if (Input.GetMouseButton(0))
                 {
                     mover.StartMoveAction(hit.point);
-                    
+                    _isInCombat = false;
                 }
                 _canMoveToPoint = true;
             }

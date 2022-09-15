@@ -1298,32 +1298,6 @@ Transform:
   m_Father: {fileID: 5997705034611285435}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!136 &8768985862485130566
-CapsuleCollider:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 8169817817171676268}
-  m_Material: {fileID: 0}
-  m_IsTrigger: 0
-  m_Enabled: 1
-  m_Radius: 0.5
-  m_Height: 4
-  m_Direction: 1
-  m_Center: {x: 0, y: 0, z: 0}
---- !u!114 &430711760440924551
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 8169817817171676268}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 6f17818489c4e564eb852a7120340165, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!1 &6079252405504870227
 GameObject:
   m_ObjectHideFlags: 0
@@ -1734,6 +1708,82 @@ Transform:
   m_Father: {fileID: 5017354142744496933}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!136 &8768985862485130566
+CapsuleCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8169817817171676268}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  m_Radius: 0.5
+  m_Height: 4
+  m_Direction: 1
+  m_Center: {x: 0, y: 0, z: 0}
+--- !u!114 &-7099728703083036884
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8169817817171676268}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9f2ed4813e8acc94c9218307b26c5d1c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  chaseDistance: 5
+  ExpierenceGiven: 0
+--- !u!114 &-5678291408708664399
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8169817817171676268}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 304a7508d2d07ba43868e82c2c83bb7e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  Name: 
+  Job: 0
+  JobLevel: 1
+  JobsStore: {fileID: 0}
+  Stats:
+    Attack: 0
+    Defense: 0
+    HitPoints: 0
+    Movement: 0
+  ExperienceValue: 0
+--- !u!114 &94199008957405178
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8169817817171676268}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9348126e01c9d314f80ec98ee484231e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  amount: 0
+  isDead: 0
+--- !u!114 &6608163580454579152
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8169817817171676268}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e6c05d2c14a6bc94eb54daf115b6395b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &8222880987795512711
 GameObject:
   m_ObjectHideFlags: 0
@@ -2139,6 +2189,11 @@ PrefabInstance:
       propertyPath: m_Name
       value: Enemy
       objectReference: {fileID: 0}
+    - target: {fileID: 2558075299945870136, guid: a3da08514e61bb842a847a85897b3fb6,
+        type: 3}
+      propertyPath: m_TagString
+      value: Enemy
+      objectReference: {fileID: 0}
     - target: {fileID: 2558075299945870140, guid: a3da08514e61bb842a847a85897b3fb6,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -2204,7 +2259,8 @@ PrefabInstance:
       propertyPath: isDead
       value: 0
       objectReference: {fileID: 0}
-    m_RemovedComponents: []
+    m_RemovedComponents:
+    - {fileID: 4543700851404124563, guid: a3da08514e61bb842a847a85897b3fb6, type: 3}
   m_SourcePrefab: {fileID: 100100000, guid: a3da08514e61bb842a847a85897b3fb6, type: 3}
 --- !u!1 &8169817817171676268 stripped
 GameObject:
