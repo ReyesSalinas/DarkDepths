@@ -1,5 +1,3 @@
-using System;
-using System.Linq;
 public class Armor : IEquipment
 {
     public int Bonus { get; set; }

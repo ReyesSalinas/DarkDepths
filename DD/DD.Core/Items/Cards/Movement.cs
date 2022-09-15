@@ -1,5 +1,3 @@
-using System;
-using System.Linq;
 public class Movement : ICard
 {
     public int Id { get; set; }

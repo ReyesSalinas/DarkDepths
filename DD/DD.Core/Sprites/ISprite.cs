@@ -1,5 +1,11 @@
-﻿public interface ISprite
+﻿using System;
+
+namespace DD.Core.Sprites
 {
-    object Id { get; set; }
-    string Type { get; set; }
+    public interface ISprite
+    {
+        Guid Id { get; set; }
+        string Name { get; set; }
+        string Type { get; set; }
+    }
 }
